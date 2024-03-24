@@ -1,0 +1,14 @@
+{
+  "$schema": "https://shadcn-svelte.com/schema.json",
+  "style": "default",
+  "tailwind": {
+    "config": "/Users/dandele/Desktop/Projects/Coding/Youtubestatsreporter/my-app/tailwind.config.js",
+    "css": "/Users/dandele/Desktop/Projects/Coding/Youtubestatsreporter/my-app/src/app.pcss",
+    "baseColor": "stone"
+  },
+  "aliases": {
+    "components": "$lib/components",
+    "utils": "$lib/utils"
+  },
+  "typescript": false
+}
