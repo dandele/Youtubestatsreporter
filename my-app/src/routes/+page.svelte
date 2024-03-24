@@ -1,6 +1,7 @@
 <script>
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import { Button } from "$lib/components/ui/button";
 </script>
 
 <svelte:head>
@@ -9,7 +10,7 @@
 </svelte:head>
 
 <section>
-	<h1>
+	<h1 class="text-center">
 		<span class="welcome">
 			<picture>
 				<source srcset={welcome} type="image/webp" />
@@ -21,7 +22,10 @@
 	</h1>
 
 
-	<a href="/dashboard" class="button">Raccogli statistiche, dai</a>
+	
+	<Button class="bg-secondary text-foreground mt-8 hover:bg-secondary hover:text-foreground hover:underline">
+		<a href="/auth" class="button">Raccogli statistiche, dai</a>
+	</Button>
 	
 </section>
 

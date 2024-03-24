@@ -12,7 +12,7 @@
 	</main>
 
 	<footer>
-		<p>made with 💙 by Daniele at <a href="https://paradygma.tech/">Paradygma</a></p>
+		<p>made with 💙 by Daniele at <a class="underline" href="https://paradygma.tech/">Paradygma</a></p>
 	</footer>
 </div>
 
