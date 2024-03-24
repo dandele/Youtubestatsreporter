@@ -21,7 +21,7 @@
             },
             })
         registrationMessage = 'La tua registrazione è avvenuta con successo, ti abbiamo mandato una mail di conferma!';
-        window.location.href = 'http://localhost:5173/dashboard';
+        window.location.href = '/dashboard';
         console.log('registrazione avvenuta con successo per la mail: ' + email )
     }
 
@@ -31,7 +31,7 @@
             password: password_login,
         })
         console.log(data);
-        window.location.href = 'http://localhost:5173/dashboard';
+        window.location.href = '/dashboard';
     }
 
 </script>
