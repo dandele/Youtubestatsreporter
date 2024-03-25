@@ -2,6 +2,42 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
+	import { supabase } from '$lib/supabaseClient';
+	import { Button } from '$lib/components/ui/button';
+	import { onMount } from 'svelte';
+
+async function dashboardToggl() {	
+	const { data: { user } } = await supabase.auth.getUser();
+	const dashboardMenu = document.getElementById('dashboard_menu');
+	const authMenu = document.getElementById('auth_menu');
+	const logOut = document.getElementById('logOut');
+    if (dashboardMenu && authMenu && logOut) {    
+	if (user) {
+			dashboardMenu.hidden = false;
+			authMenu.hidden = true;
+			logOut.hidden = false;
+		} else {
+			dashboardMenu.hidden = true;
+        	authMenu.hidden = false;
+			logOut.hidden = true;
+		}
+		async function signOut() {
+			let { error } = await supabase.auth.signOut();
+			if (error) {
+			console.error('Errore durante il logout:', error.message);
+			} else {
+			console.log('Logout avvenuto con successo');
+			window.location.href = '/auth';
+								}
+		}
+		logOut.addEventListener("click", signOut);
+	}
+	}
+	
+	onMount(() => {
+    dashboardToggl() });
+	
+
 </script>
 
 <header>
@@ -22,8 +58,11 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/auth') ? 'page' : undefined}>
+			<li id="auth_menu" aria-current={$page.url.pathname.startsWith('/auth') ? 'page' : undefined} hidden>
 				<a href="/auth">Registrati</a>
+			</li>
+			<li id="dashboard_menu" aria-current={$page.url.pathname.startsWith('/dashboard') ? 'page' : undefined}>
+				<a href="/dashboard">Dashboard</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -31,11 +70,11 @@
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+	
+	<Button type="button" id="logOut"
+	class="w-1/6 bg-secondary text-secondary-foreground hover:bg-secondary hover:underline">Adios
+	</Button>
+	
 </header>
 
 <style>
