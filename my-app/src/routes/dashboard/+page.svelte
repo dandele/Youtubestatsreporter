@@ -137,7 +137,10 @@ testQuery();
 					];
 					console.log(video_title);
 					// Tentativo di insert dati su supabase
-					const { input, error } = await supabase
+					const { data: { user } } = await supabase.auth.getUser()
+                    if (user) { 
+                    const userId = user.id;
+                    const { input, error } = await supabase
 						.from('youtube_stats')
 						.insert([
 							{
@@ -145,10 +148,13 @@ testQuery();
 								title: video_title,
 								views: video_views,
 								likes: video_likes,
-								comments: video_comments
+								comments: video_comments,
+                                created_by: userId
 							}
 						])
 						.select();
+                     }
+                    
 				} catch (error) {
 					console.error('Errore durante la richiesta:', error);
 				} finally {
