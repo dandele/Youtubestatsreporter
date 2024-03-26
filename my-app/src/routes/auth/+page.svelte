@@ -17,7 +17,7 @@
             email: email,
             password: password,
             options: {
-            emailRedirectTo: 'http://localhost:5173/dashboard',
+            emailRedirectTo: '/dashboard',
             },
             })
         registrationMessage = 'La tua registrazione è avvenuta con successo, ti abbiamo mandato una mail di conferma!';
