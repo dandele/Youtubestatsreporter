@@ -61,7 +61,7 @@ async function dashboardToggl() {
 			<li id="auth_menu" aria-current={$page.url.pathname.startsWith('/auth') ? 'page' : undefined} hidden>
 				<a href="/auth">Registrati</a>
 			</li>
-			<li id="dashboard_menu" aria-current={$page.url.pathname.startsWith('/dashboard') ? 'page' : undefined}>
+			<li id="dashboard_menu" aria-current={$page.url.pathname.startsWith('/dashboard') ? 'page' : undefined} hidden>
 				<a href="/dashboard">Dashboard</a>
 			</li>
 		</ul>
