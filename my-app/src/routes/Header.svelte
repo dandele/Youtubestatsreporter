@@ -10,18 +10,21 @@ async function dashboardToggl() {
 	const { data: { user } } = await supabase.auth.getUser();
 	const dashboardMenu = document.getElementById('dashboard_menu');
 	const authMenu = document.getElementById('auth_menu');
-	const logOut = document.getElementById('logOut');
+ 	const logOut = document.getElementById('logOut');
     if (dashboardMenu && authMenu && logOut) {    
 	if (user) {
-			dashboardMenu.hidden = false;
-			authMenu.hidden = true;
-			logOut.hidden = false;
+			dashboardMenu.style.visibility = 'visible';
+			authMenu.style.visibility = 'collapse';
+			logOut.style.visibility = 'collapse';
 		} else {
-			dashboardMenu.hidden = true;
-        	authMenu.hidden = false;
-			logOut.hidden = true;
+			dashboardMenu.style.visibility = 'hidden';
+        	authMenu.style.visibility = 'collapse';
+			logOut.style.visibility = 'collapse';
 		}
-		async function signOut() {
+	}
+	}
+
+	async function signOut() {
 			let { error } = await supabase.auth.signOut();
 			if (error) {
 			console.error('Errore durante il logout:', error.message);
@@ -30,9 +33,6 @@ async function dashboardToggl() {
 			window.location.href = '/auth';
 								}
 		}
-		logOut.addEventListener("click", signOut);
-	}
-	}
 	
 	onMount(() => {
     dashboardToggl() });
@@ -47,7 +47,7 @@ async function dashboardToggl() {
 		</a>
 	</div>
 
-	<nav>
+	<nav class="mx-auto">
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
@@ -58,10 +58,10 @@ async function dashboardToggl() {
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li id="auth_menu" aria-current={$page.url.pathname.startsWith('/auth') ? 'page' : undefined} hidden>
+			<li id="auth_menu" aria-current={$page.url.pathname.startsWith('/auth') ? 'page' : undefined} style="visibility: collapse;">
 				<a href="/auth">Registrati</a>
 			</li>
-			<li id="dashboard_menu" aria-current={$page.url.pathname.startsWith('/dashboard') ? 'page' : undefined} hidden>
+			<li id="dashboard_menu" aria-current={$page.url.pathname.startsWith('/dashboard') ? 'page' : undefined} style="visibility: collapse;">
 				<a href="/dashboard">Dashboard</a>
 			</li>
 		</ul>
@@ -70,10 +70,11 @@ async function dashboardToggl() {
 		</svg>
 	</nav>
 
-	
-	<Button type="button" id="logOut"
-	class="w-1/6 bg-secondary text-secondary-foreground hover:bg-secondary hover:underline">Adios
-	</Button>
+	<div class="inline" id="logOut" hidden >
+	<a class="corner p-8 h-full text-red-500 underline" href="/" on:click={signOut}>
+		<span>Sign-out</span>
+	</a>
+</div>
 	
 </header>
 
