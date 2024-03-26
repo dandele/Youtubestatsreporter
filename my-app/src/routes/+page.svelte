@@ -23,7 +23,7 @@
 
 
 	
-	<Button class="bg-secondary text-foreground mt-8 hover:bg-secondary hover:text-foreground hover:underline">
+	<Button class="bg-primary text-foreground mt-8 hover:bg-secondary hover:text-foreground hover:underline">
 		<a href="/auth" class="button">Raccogli statistiche, dai</a>
 	</Button>
 	

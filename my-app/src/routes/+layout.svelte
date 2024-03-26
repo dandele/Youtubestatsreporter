@@ -4,7 +4,7 @@
 	import './styles.css';
 </script>
 
-<div class="app bg-primary text-primary-foreground">
+<div class="app bg-secondary text-primary-foreground">
 	<Header></Header>
 
 	<main>

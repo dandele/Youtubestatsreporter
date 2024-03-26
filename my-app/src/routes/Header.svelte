@@ -47,7 +47,7 @@ async function dashboardToggl() {
 		</a>
 	</div>
 
-	<nav class="mx-auto">
+	<nav class="mx-auto bg-primary">
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
@@ -70,7 +70,7 @@ async function dashboardToggl() {
 		</svg>
 	</nav>
 
-	<div class="inline" id="logOut" hidden >
+	<div class="inline text-red-500" id="logOut">
 	<a class="corner p-8 h-full text-red-500 underline" href="/" on:click={signOut}>
 		<span>Sign-out</span>
 	</a>
