@@ -21,7 +21,7 @@
             },
             })
         registrationMessage = 'La tua registrazione è avvenuta con successo, ti abbiamo mandato una mail di conferma!';
-        window.location.href = '/dashboard';
+        window.location.href = '/subscription_confirmed';
         console.log('registrazione avvenuta con successo per la mail: ' + email )
     }
 
