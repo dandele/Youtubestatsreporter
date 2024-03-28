@@ -11,6 +11,12 @@
 	import { supabase } from '$lib/supabaseClient';
 	import { onMount } from 'svelte';
 
+	async function notionIdentity() {
+		const { data, error } = await supabase.auth.linkIdentity({ provider: 'notion' })
+		console.log(data)
+	}
+
+
 	// Dichiarazione della variabile export let youtubeStats = [];
 
 	//async function fetchSupa() {
@@ -98,6 +104,7 @@ testQuery();
 
 */
 	onMount(() => {
+		notionIdentity();
 		const storedStats = localStorage.getItem('youtubeStats');
 		if (storedStats) {
 			youtubeStats = JSON.parse(storedStats);
