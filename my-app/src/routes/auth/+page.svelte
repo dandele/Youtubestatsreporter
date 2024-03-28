@@ -34,13 +34,21 @@
         window.location.href = '/dashboard';
     }
 
+    async function signInWithNotion() {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'notion',
+  })
+        console.log(data);
+        window.location.href = '/dashboard';
+}
+
+
 </script>
 
 <section class="flex items-center w-full h-full">
-    <Card.Root class="w-2/3 mx-auto self-center mt-36">
+    <Card.Root class="w-2/3 mx-auto self-center">
         <Card.Header>
-          <Card.Title>Iscriviti o accedi</Card.Title>
-          <Card.Description>Card Description</Card.Description>
+          <Card.Title class="mx-auto">Iscriviti o accedi</Card.Title>
         </Card.Header>
         <Card.Content>
             <div class="flex flex-col">
@@ -61,7 +69,7 @@
                     {/if}
                 </div>
                 <div class="mt-10">
-                    <h2 class="w-full pb-2">Già iscritto? Allora accedi!</h2>
+                    <h2 class="w-full pb-2">Accedi!</h2>
                     <form on:submit={signInWithEmail} class="w-full flex flex-col justify-between">
                         <input class=" w-full mr-2 text-primary pl-4 mt-4" id="input_yt" type="text" bind:value={email_login} placeholder="Email" required >
                         <input class=" w-full mr-2 text-primary pl-4 mt-4" id="input_yt" type="text" bind:value={password_login} placeholder="Password" required>
@@ -75,8 +83,10 @@
                 </div>
             </div>
         </Card.Content>
-        <Card.Footer>
-            Password dimenticata?
+        <Card.Footer class="mx-auto flex flex-col gap-4">
+            <p>oppure</p>
+            <Button on:click={signInWithNotion}>Accedi con Notion</Button>
+            <Button>Accedi con Google</Button>
         </Card.Footer>
     </Card.Root>
 
