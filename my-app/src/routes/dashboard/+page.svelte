@@ -194,7 +194,12 @@ testQuery();
 	<meta name="description" content="Dashboard for this app" />
 </svelte:head>
 
-<section class="w-full">
+<section >
+	<div>
+		<Bar data = {youtubeStats}/> 
+	</div>
+</section>
+<section class="w-full mt-16">
 	<div class="flex flex-col">
 		<h2 class="w-full pb-2">Inserisci il link del video youtube</h2>
 		<form on:submit={link_regulator} class="flex w-full justify-between">
@@ -236,8 +241,4 @@ testQuery();
 		</Table.Root>
 	</div>
 	</section>
-	<section >
-		<div>
-			<Bar data = {youtubeStats}/> 
-		</div>
-	</section>
+	
