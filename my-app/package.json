@@ -40,6 +40,7 @@
 		"bits-ui": "^0.20.0",
 		"clsx": "^2.1.0",
 		"cmdk-sv": "^0.0.15",
+		"d3": "^7.9.0",
 		"dotenv": "^16.4.5",
 		"email-validator": "^2.0.4",
 		"embla-carousel-svelte": "^8.0.0",

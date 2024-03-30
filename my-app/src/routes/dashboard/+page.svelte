@@ -1,12 +1,14 @@
 <script>
+// @ts-nocheck
+
 	let youtube_link = '';
 	let youtube_id = '';
 	let videos = []; // Array per memorizzare i video
 	let userItems = []; // Array per memorizzare gli elementi dell'utente connesso
 
 	import { Button } from '$lib/components/ui/button';
+	import { Bar } from '$lib/components/ui/bar';
 	import * as Table from '$lib/components/ui/table';
-	import { Input } from '$lib/components/ui/input';
 
 	import { supabase } from '$lib/supabaseClient';
 	import { onMount } from 'svelte';
@@ -32,7 +34,13 @@
 	//
 	//fetchSupa();
 
-	export let youtubeStats = []; // Dichiarazione della variabile
+	// export let youtubeStats : { id: string, title: string, views: number, likes: number, comments: number }[] = [] // Dichiarazione della variabile
+
+	/**
+ 	* @type {Array<{ id: string, title: string, views: string, likes: number, comments: number }>}
+ 	*/
+	let youtubeStats = [];
+
 
 	async function fetchSupa() { // Recupero video inseriti E filtrati per utente
         const { data: { user } } = await supabase.auth.getUser()
@@ -178,6 +186,7 @@ testQuery();
 
 	// Aggiorna i dati all'avvio della pagina
 	fetchSupa();
+
 </script>
 
 <svelte:head>
@@ -185,7 +194,7 @@ testQuery();
 	<meta name="description" content="Dashboard for this app" />
 </svelte:head>
 
-<section>
+<section class="w-full">
 	<div class="flex flex-col">
 		<h2 class="w-full pb-2">Inserisci il link del video youtube</h2>
 		<form on:submit={link_regulator} class="flex w-full justify-between">
@@ -226,4 +235,9 @@ testQuery();
 			</Table.Body>
 		</Table.Root>
 	</div>
-</section>
+	</section>
+	<section >
+		<div>
+			<Bar data = {youtubeStats}/> 
+		</div>
+	</section>
