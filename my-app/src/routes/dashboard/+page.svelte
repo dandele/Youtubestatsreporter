@@ -206,7 +206,7 @@ testQuery();
 			/>
 			<Button
 				type="submit"
-				class="w-1/6 bg-secondary text-secondary-foreground hover:bg-secondary hover:underline"
+				class="w-1/6 bg-primary text-secondary-foreground hover:bg-secondary hover:underline"
 				>Ottieni report</Button
 			>
 		</form>
@@ -223,9 +223,9 @@ testQuery();
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each youtubeStats as stat}
+				{#each youtubeStats as stat, i}
 					<Table.Row>
-						<Table.Cell class="font-medium">{stat.id}</Table.Cell>
+						<Table.Cell class="font-medium">{i + 1}</Table.Cell>
 						<Table.Cell>{stat.title}</Table.Cell>
 						<Table.Cell>{stat.views}</Table.Cell>
 						<Table.Cell>{stat.likes}</Table.Cell>
@@ -235,9 +235,8 @@ testQuery();
 			</Table.Body>
 		</Table.Root>
 	</div>
+	<div class="mt-8">
+		<Bar data = {youtubeStats}/> 
+	</div>
 	</section>
-	<section >
-		<div>
-			<Bar data = {youtubeStats}/> 
-		</div>
-	</section>
+
