@@ -35,8 +35,6 @@ $: {
   innerWidth = width - (padding.left + padding.right);
   barWidth = innerWidth / xTicks.length;
 }
-
-let maxDataValue = Math.max(...data.map(d => Math.max(d.views, d.likes, d.comments)));
 </script>
 
 <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
@@ -91,35 +89,12 @@ let maxDataValue = Math.max(...data.map(d => Math.max(d.views, d.likes, d.commen
 				<rect
 					class="bg-primary-foreground"
 					x={xScale(i) + 2}
-					y={yScale(maxDataValue) - yScale(point.views)} 
-					width={(barWidth - 8)/3}
+					y={yScale(point.views)}
+					width={barWidth - 8}
 					height={yScale(0) - yScale(point.views)}
 					fill="currentColor"
 					rx="4"
 					ry="4"
-                    style="transition: height 0.5s ease;"
-				/>
-				<rect
-					class="bg-like-color"
-					x={xScale(i) + 2 + ((barWidth - 8) / 3)}
-					y={yScale(maxDataValue) - yScale(point.likes)} 
-					width={(barWidth - 8)/3}
-					height={yScale(0) - yScale(point.views)}
-					fill="currentColor"
-					rx="4"
-					ry="4"
-                    style="transition: height 0.5s ease;"
-				/>
-				<rect
-					class="bg-comment-color"
-					x={xScale(i) + 2 + 2 * ((barWidth - 8) / 3)}
-					y={yScale(maxDataValue) - yScale(point.comments)} 
-					width={(barWidth - 8)/3}
-					height={yScale(0) - yScale(point.views)}
-					fill="currentColor"
-					rx="4"
-					ry="4"
-                    style="transition: height 0.5s ease;"
 				/>
 			{/each}
 		</g>
@@ -139,17 +114,6 @@ let maxDataValue = Math.max(...data.map(d => Math.max(d.views, d.likes, d.commen
 	}
 
 	rect {
-		max-width: 20px;
+		max-width: 51px;
 	}
-
-    /* Stili per le barre dei like */
-.bg-like-color {
-    fill: #008000; /* Colore verde */
-}
-
-/* Stili per le barre dei commenti */
-.bg-comment-color {
-    fill: #0000ff; /* Colore blu */
-}
-
 </style>
